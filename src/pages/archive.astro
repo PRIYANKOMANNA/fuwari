@@ -1,14 +1,18 @@
 ---
 import ArchivePanel from "@components/ArchivePanel.svelte";
-import I18nKey from "@i18n/i18nKey";
-import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "../utils/content-utils";
 
+// Fetch posts (blog, news, updates)
 const sortedPosts = await getSortedPosts();
 ---
 
-<MainGridLayout title={i18n(I18nKey.archive)}>
-    <ArchivePanel sortedPosts={sortedPosts} client:only="svelte"></ArchivePanel>
+<MainGridLayout title="খোলা পাতা | সেবা, গল্প ও সংযোগ">
+  <section class="p-6">
+    <h1 class="text-3xl font-bold text-green-800 mb-4">📚 খোলা পাতা আর্কাইভ</h1>
+    <p class="text-lg text-gray-700 mb-6">
+      এখানে পাবেন সমস্ত পুরোনো কনটেন্ট, ঘোষণা, ব্লগ, ও ডিজিটাল সেবার আপডেট — এক জায়গায়।
+    </p>
+    <ArchivePanel sortedPosts={sortedPosts} client:only="svelte" />
+  </section>
 </MainGridLayout>
-

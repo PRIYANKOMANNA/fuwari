@@ -1,25 +1,29 @@
 ---
-
 import { getEntry, render } from "astro:content";
 import Markdown from "@components/misc/Markdown.astro";
-import I18nKey from "../i18n/i18nKey";
-import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 const aboutPost = await getEntry("spec", "about");
 
 if (!aboutPost) {
-	throw new Error("About page content not found");
+  throw new Error("About page content not found");
 }
 
 const { Content } = await render(aboutPost);
 ---
-<MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
-    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
-        <div class="card-base z-10 px-9 py-6 relative w-full ">
-            <Markdown class="mt-2">
-                <Content />
-            </Markdown>
-        </div>
+<MainGridLayout title="আমাদের সম্পর্কে" description="খোলা পাতা সম্পর্কে জানুন">
+  <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-9 py-6 relative w-full">
+      <h1 class="text-3xl font-bold text-green-800 mb-4">🌿 খোলা পাতা সম্পর্কে</h1>
+      <p class="mb-4 text-lg text-gray-700">
+        খোলা পাতা একটি ডিজিটাল প্ল্যাটফর্ম, যেখানে সরকারী পরিষেবা, মিডিয়া, এবং শেখার সুযোগ – সব কিছু একত্রিত। আমরা মানুষের হাতে তথ্য ও সেবা পৌঁছে দেওয়ার জন্য কাজ করি, বিশেষত গ্রামীণ ও আধা-শহর এলাকায়।
+      </p>
+      <p class="mb-4 text-gray-700">
+        আমাদের ভিশন হল ডিজিটাল ইন্ডিয়া-কে বাস্তবায়িত করতে সহায়তা করা এবং তথ্যপ্রযুক্তিকে মানুষের সেবায় ব্যবহার করা। YouTube, সাংবাদিকতা, ফ্রিল্যান্সিং, এবং সরকারি সেবা — সব এক ছাতার নিচে।
+      </p>
+      <Markdown class="mt-4">
+        <Content />
+      </Markdown>
     </div>
+  </div>
 </MainGridLayout>
